@@ -1,31 +1,14 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { RecipesByCategory } from '../lib/types';
+import recipesData from '../public/recipes.json';
 
 const Layout = dynamic(() => import('../components/Layout'), { ssr: false });
 const RecipeModal = dynamic(() => import('../components/RecipeModal'), { ssr: false });
 
 export default function Home() {
-  const [recipes, setRecipes] = React.useState<RecipesByCategory | null>(null);
-  const [githubRepo, setGithubRepo] = React.useState('');
-
-  React.useEffect(() => {
-    const loadData = async () => {
-      try {
-        const response = await fetch('/recipes.json');
-        const recipeData = await response.json();
-        setRecipes(recipeData);
-        setGithubRepo(process.env.GITHUB_USERNAME_SLASH_REPO || 'magalipujol/missedSteak');
-      } catch (error) {
-        console.error('Error loading recipes:', error);
-      }
-    };
-    loadData();
-  }, []);
-
-  if (!recipes) {
-    return <div>Loading...</div>;
-  }
+  const recipes = recipesData as RecipesByCategory;
+  const githubRepo = process.env.GITHUB_USERNAME_SLASH_REPO || 'magalipujol/missedSteak';
   return (
     <Layout title="Missed Steak - Vegetarian Recipes" githubRepo={githubRepo}>
       {/* Masthead */}
