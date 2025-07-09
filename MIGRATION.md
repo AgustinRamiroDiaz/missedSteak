@@ -48,7 +48,19 @@ npm run build
 
 ## Environment Variables
 
-Set `GITHUB_USERNAME_SLASH_REPO` to customize the GitHub repository for recipe management.
+- `GITHUB_USERNAME_SLASH_REPO` - GitHub repository for recipe management
+- `BASE_PATH` - Set base path for deployment (e.g., `/missedSteak` for GitHub Pages)
+
+## Deployment
+
+### GitHub Pages
+The site is configured to deploy automatically to GitHub Pages via GitHub Actions. The deployment workflow:
+1. Builds the site with the correct base path
+2. Exports to the `out` directory
+3. Deploys to GitHub Pages
+
+### Other Static Hosts
+For other static hosts (Vercel, Netlify, etc.), simply run `npm run build` and deploy the `out` directory.
 
 ## Notes
 

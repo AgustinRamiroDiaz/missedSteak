@@ -23,12 +23,12 @@ jobs:
           node-version: 22
 
       - run: npm ci
-      - run: GITHUB_USERNAME_SLASH_REPO=$GITHUB_REPOSITORY npm run build -- --pathprefix ${{ github.event.repository.name }}
+      - run: GITHUB_USERNAME_SLASH_REPO=$GITHUB_REPOSITORY BASE_PATH=/${{ github.event.repository.name }} npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site
+          path: ./out
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
