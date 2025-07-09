@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "npm run generate-recipes && next dev",
+    "build": "npm run generate-recipes && next build",
     "start": "next start",
-    "export": "next build"
+    "export": "npm run generate-recipes && next build",
+    "generate-recipes": "node scripts/generate-recipes.js"
   },
   "keywords": [],
   "author": "",

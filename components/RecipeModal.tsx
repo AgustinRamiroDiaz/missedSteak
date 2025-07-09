@@ -1,5 +1,5 @@
 import React from 'react';
-import { Recipe } from '../lib/recipes';
+import { Recipe } from '../lib/types';
 
 interface RecipeModalProps {
   recipe: Recipe;
@@ -16,7 +16,7 @@ export default function RecipeModal({ recipe, filename, type, githubRepo }: Reci
   const recipeSlug = slugify(recipe.title);
 
   const deleteRecipe = () => {
-    const githubUrl = `https://github.com/${githubRepo}/delete/main/src/_data/recipes/${type}/${filename}.json`;
+    const githubUrl = `https://github.com/${githubRepo}/delete/main/lib/recipes/${type}/${filename}.json`;
     window.open(githubUrl, '_blank');
   };
 

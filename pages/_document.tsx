@@ -17,7 +17,7 @@ export default function Document() {
         {/* Core theme CSS (includes Bootstrap) */}
         <link href="/css/styles.css" rel="stylesheet" />
       </Head>
-      <body id="page-top">
+      <body id="page-top" suppressHydrationWarning>
         <Main />
         <NextScript />
         {/* Bootstrap core JS */}

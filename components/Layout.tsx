@@ -95,13 +95,23 @@ export default function Layout({ children, title = "Missed Steak", githubRepo = 
 }
 
 function NewRecipeModal({ githubRepo }: { githubRepo: string }) {
+  const [isClient, setIsClient] = React.useState(false);
+
   React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  React.useEffect(() => {
+    if (!isClient) return;
+
     const handleSubmit = () => {
       const title = (document.getElementById('recipeTitle') as HTMLInputElement)?.value;
       const image = (document.getElementById('recipeImage') as HTMLInputElement)?.value;
       const instructions = (document.getElementById('recipeInstructions') as HTMLTextAreaElement)?.value;
       const link = (document.getElementById('recipeLink') as HTMLInputElement)?.value;
       const type = (document.querySelector('input[name="recipeType"]:checked') as HTMLInputElement)?.value;
+
+      if (!title || !image || !instructions || !type) return;
 
       const formattedInstructions = instructions.replace(/\n/g, '<br>');
 
@@ -115,7 +125,7 @@ function NewRecipeModal({ githubRepo }: { githubRepo: string }) {
       const jsonData = JSON.stringify(recipeData, null, 2);
       const encodedData = encodeURIComponent(jsonData);
       const filename = title.toLowerCase().replace(/\s+/g, '-') + '.json';
-      const githubUrl = `https://github.com/${githubRepo}/new/main/src/_data/recipes/${type}?filename=${filename}&value=${encodedData}`;
+      const githubUrl = `https://github.com/${githubRepo}/new/main/lib/recipes/${type}?filename=${filename}.json&value=${encodedData}`;
 
       window.open(githubUrl, '_blank');
     };
@@ -125,7 +135,7 @@ function NewRecipeModal({ githubRepo }: { githubRepo: string }) {
       submitButton.addEventListener('click', handleSubmit);
       return () => submitButton.removeEventListener('click', handleSubmit);
     }
-  }, [githubRepo]);
+  }, [githubRepo, isClient]);
 
   return (
     <div className="portfolio-modal modal fade" id="newRecipeModal" tabIndex={-1} role="dialog" aria-labelledby="newRecipeModalLabel" aria-hidden="true">
