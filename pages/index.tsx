@@ -1,0 +1,113 @@
+import React from 'react';
+import { GetStaticProps } from 'next';
+import Layout from '../components/Layout';
+import RecipeModal from '../components/RecipeModal';
+import { getAllRecipes, getSiteData, RecipesByCategory } from '../lib/recipes';
+
+interface HomeProps {
+  recipes: RecipesByCategory;
+  githubRepo: string;
+}
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const recipes = getAllRecipes();
+  const siteData = getSiteData();
+
+  return {
+    props: {
+      recipes,
+      githubRepo: siteData.github.usernameSlashRepo || '',
+    },
+  };
+};
+
+export default function Home({ recipes, githubRepo }: HomeProps) {
+  return (
+    <Layout title="Missed Steak - Vegetarian Recipes" githubRepo={githubRepo}>
+      {/* Masthead */}
+      <header className="masthead bg-primary text-white text-center">
+        <div className="container d-flex align-items-center flex-column">
+          <img className="masthead-avatar mb-5" src="/assets/img/salad.png" alt="..." />
+          <h1 className="masthead-heading text-uppercase mb-0">vegetarian recipes</h1>
+          <div className="divider-custom divider-light">
+            <div className="divider-custom-line"></div>
+            <div className="divider-custom-icon"><i className="fas fa-utensils"></i></div>
+            <div className="divider-custom-line"></div>
+          </div>
+          <p className="masthead-subheading font-weight-light mb-0">
+            This recipes will show you that becoming a vegetarian is not a missed steak
+          </p>
+        </div>
+      </header>
+
+      {/* Basics Section */}
+      <section className="page-section portfolio" id="basics" style={{ backgroundColor: '#8c271e' }}>
+        <div className="container">
+          <h2 className="page-section-heading text-center text-uppercase text-white mb-0">Basics</h2>
+          <div className="divider-custom divider-light">
+            <div className="divider-custom-line"></div>
+            <div className="divider-custom-icon"><i className="fas fa-leaf"></i></div>
+            <div className="divider-custom-line"></div>
+          </div>
+          <div className="row justify-content-center">
+            {recipes.basics.map((item, index) => (
+              <RecipeModal
+                key={index}
+                recipe={item.recipe}
+                filename={item.filename}
+                type="basics"
+                githubRepo={githubRepo}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section className="page-section portfolio" id="portfolio">
+        <div className="container">
+          <h2 className="page-section-heading text-center text-uppercase text-secondary mb-0">Savory</h2>
+          <div className="divider-custom">
+            <div className="divider-custom-line"></div>
+            <div className="divider-custom-icon"><i className="fas fa-carrot"></i></div>
+            <div className="divider-custom-line"></div>
+          </div>
+          <div className="row justify-content-center">
+            {recipes.savory.map((item, index) => (
+              <RecipeModal
+                key={index}
+                recipe={item.recipe}
+                filename={item.filename}
+                type="savory"
+                githubRepo={githubRepo}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="page-section bg-primary text-white mb-0" id="about">
+        <div className="container">
+          <h2 className="page-section-heading text-center text-uppercase text-white">Sweet</h2>
+          <div className="divider-custom divider-light">
+            <div className="divider-custom-line"></div>
+            <div className="divider-custom-icon"><i className="fas fa-candy-cane"></i></div>
+            <div className="divider-custom-line"></div>
+          </div>
+          <div className="row justify-content-center">
+            {recipes.sweet.map((item, index) => (
+              <RecipeModal
+                key={index}
+                recipe={item.recipe}
+                filename={item.filename}
+                type="sweet"
+                githubRepo={githubRepo}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    </Layout>
+  );
+}
