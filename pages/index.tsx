@@ -1,5 +1,6 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { RecipesByCategory } from '../lib/types';
 import recipesData from '../public/recipes.json';
 
@@ -14,7 +15,7 @@ export default function Home() {
       {/* Masthead */}
       <header className="masthead bg-primary text-white text-center">
         <div className="container d-flex align-items-center flex-column">
-          <img className="masthead-avatar mb-5" src="/assets/img/salad.png" alt="..." />
+          <Image className="masthead-avatar mb-5" src="/assets/img/salad.png" alt="Vegetarian Salad" width={200} height={200} />
           <h1 className="masthead-heading text-uppercase mb-0">vegetarian recipes</h1>
           <div className="divider-custom divider-light">
             <div className="divider-custom-line"></div>

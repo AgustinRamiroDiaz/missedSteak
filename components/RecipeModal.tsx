@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Recipe } from '../lib/types';
 
 interface RecipeModalProps {
@@ -30,7 +31,7 @@ export default function RecipeModal({ recipe, filename, type, githubRepo }: Reci
               <i className="fas fa-plus fa-3x"></i>
             </div>
           </div>
-          <img className="img-fluid" src={recipe.image} alt={recipe.title} />
+          <Image className="img-fluid" src={recipe.image} alt={recipe.title} width={300} height={200} />
         </div>
       </div>
 
@@ -63,7 +64,7 @@ export default function RecipeModal({ recipe, filename, type, githubRepo }: Reci
                       <div className="divider-custom-icon"><i className="fas fa-egg"></i></div>
                       <div className="divider-custom-line"></div>
                     </div>
-                    <img className="img-fluid rounded mb-5" src={recipe.image} alt={recipe.title} />
+                    <Image className="img-fluid rounded mb-5" src={recipe.image} alt={recipe.title} width={400} height={300} />
                     <p className="mb-5" dangerouslySetInnerHTML={{ __html: recipe.instructions }}></p>
                     {recipe.link && (
                       <button className="btn btn-primary">
