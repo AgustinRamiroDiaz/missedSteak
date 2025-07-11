@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -10,10 +9,6 @@ interface LayoutProps {
 export default function Layout({ children, title = "Missed Steak", githubRepo = "" }: LayoutProps) {
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      </Head>
 
       {/* Navigation */}
       <nav className="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">

@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -10,6 +12,7 @@ const RecipeModal = dynamic(() => import('../components/RecipeModal'), { ssr: fa
 export default function Home() {
   const recipes = recipesData as RecipesByCategory;
   const githubRepo = process.env.GITHUB_USERNAME_SLASH_REPO || 'magalipujol/missedSteak';
+  
   return (
     <Layout title="Missed Steak - Vegetarian Recipes" githubRepo={githubRepo}>
       {/* Masthead */}

@@ -1,14 +1,25 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import type { Metadata } from 'next'
+import './global.css'
 
-export default function Document() {
+export const metadata: Metadata = {
+  title: 'Missed Steak - Vegetarian Recipes',
+  description: 'Vegetarian recipes that will show you that becoming a vegetarian is not a missed steak',
+  icons: {
+    icon: '/assets/img/salad.png',
+  },
+}
+
+export const viewport = 'width=device-width, initial-scale=1, shrink-to-fit=no'
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <Html lang="en">
-      <Head>
+    <html lang="en">
+      <head>
         <meta charSet="utf-8" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        {/* Favicon */}
-        <link rel="icon" type="image/x-icon" href="/assets/img/salad.png" />
         {/* Font Awesome icons (free version) */}
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossOrigin="anonymous"></script>
         {/* Google fonts */}
@@ -16,10 +27,9 @@ export default function Document() {
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         {/* Core theme CSS (includes Bootstrap) */}
         <link href="/css/styles.css" rel="stylesheet" />
-      </Head>
-      <body id="page-top" suppressHydrationWarning>
-        <Main />
-        <NextScript />
+      </head>
+      <body id="page-top">
+        {children}
         {/* Bootstrap core JS */}
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -31,6 +41,6 @@ export default function Document() {
         {/* Core theme JS */}
         <script src="/js/scripts.js"></script>
       </body>
-    </Html>
+    </html>
   )
 }
