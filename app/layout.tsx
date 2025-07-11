@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import './global.css'
 
 export const metadata: Metadata = {
@@ -20,8 +21,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        {/* Font Awesome icons (free version) */}
-        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossOrigin="anonymous"></script>
         {/* Google fonts */}
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
@@ -30,16 +29,47 @@ export default function RootLayout({
       </head>
       <body id="page-top">
         {children}
+        
+        {/* Font Awesome icons (free version) */}
+        <Script 
+          src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" 
+          strategy="beforeInteractive"
+          crossOrigin="anonymous"
+        />
+        
         {/* Bootstrap core JS */}
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <Script 
+          src="https://code.jquery.com/jquery-3.5.1.min.js"
+          strategy="beforeInteractive"
+        />
+        
+        <Script 
+          src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+          strategy="afterInteractive"
+        />
+        
         {/* Third party plugin JS */}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+        <Script 
+          src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+          strategy="afterInteractive"
+        />
+        
         {/* Contact form JS */}
-        <script src="/assets/mail/jqBootstrapValidation.js"></script>
-        <script src="/assets/mail/contact_me.js"></script>
+        <Script 
+          src="/assets/mail/jqBootstrapValidation.js"
+          strategy="afterInteractive"
+        />
+        
+        <Script 
+          src="/assets/mail/contact_me.js"
+          strategy="afterInteractive"
+        />
+        
         {/* Core theme JS */}
-        <script src="/js/scripts.js"></script>
+        <Script 
+          src="/js/scripts.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
