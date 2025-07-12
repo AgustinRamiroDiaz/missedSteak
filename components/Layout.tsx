@@ -1,4 +1,9 @@
+'use client'
+
 import React from 'react';
+import { useScroll } from '../hooks/useScroll';
+import { handleSmoothScroll } from '../utils/scrollUtils';
+import ScrollToTop from './ScrollToTop';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -7,13 +12,15 @@ interface LayoutProps {
 }
 
 export default function Layout({ children, title = "Missed Steak", githubRepo = "" }: LayoutProps) {
+  const { isNavbarShrunk } = useScroll();
+
   return (
     <>
 
       {/* Navigation */}
-      <nav className="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+      <nav className={`navbar navbar-expand-lg bg-secondary text-uppercase fixed-top ${isNavbarShrunk ? 'navbar-shrink' : ''}`} id="mainNav">
         <div className="container">
-          <a className="navbar-brand js-scroll-trigger" href="#page-top">Missed Steak</a>
+          <a className="navbar-brand" href="#page-top" onClick={(e) => handleSmoothScroll(e, '#page-top')}>Missed Steak</a>
           <button
             className="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
             type="button"
@@ -29,10 +36,10 @@ export default function Layout({ children, title = "Missed Steak", githubRepo = 
           <div className="collapse navbar-collapse" id="navbarResponsive">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item mx-0 mx-lg-1">
-                <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Savory</a>
+                <a className="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio" onClick={(e) => handleSmoothScroll(e, '#portfolio')}>Savory</a>
               </li>
               <li className="nav-item mx-0 mx-lg-1">
-                <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Sweet</a>
+                <a className="nav-link py-3 px-0 px-lg-3 rounded" href="#about" onClick={(e) => handleSmoothScroll(e, '#about')}>Sweet</a>
               </li>
               <li className="nav-item mx-0 mx-lg-1">
                 <a 
@@ -80,11 +87,7 @@ export default function Layout({ children, title = "Missed Steak", githubRepo = 
       <NewRecipeModal githubRepo={githubRepo} />
 
       {/* Scroll to Top Button */}
-      <div className="scroll-to-top d-lg-none position-fixed">
-        <a className="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
-          <i className="fa fa-chevron-up"></i>
-        </a>
-      </div>
+      <ScrollToTop />
     </>
   );
 }

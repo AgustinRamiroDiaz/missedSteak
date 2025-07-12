@@ -1,17 +1,60 @@
 'use client'
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { RecipesByCategory } from '../lib/types';
-import recipesData from '../public/recipes.json';
 
 const Layout = dynamic(() => import('../components/Layout'), { ssr: false });
 const RecipeModal = dynamic(() => import('../components/RecipeModal'), { ssr: false });
 
 export default function Home() {
-  const recipes = recipesData as RecipesByCategory;
-  const githubRepo = process.env.GITHUB_USERNAME_SLASH_REPO || 'magalipujol/missedSteak';
+  const [recipes, setRecipes] = useState<RecipesByCategory | null>(null);
+  const [loading, setLoading] = useState(true);
+  const githubRepo = process.env.NEXT_PUBLIC_GITHUB_USERNAME_SLASH_REPO || 'magalipujol/missedSteak';
+
+  useEffect(() => {
+    const loadRecipes = async () => {
+      try {
+        const response = await fetch('/recipes.json');
+        if (!response.ok) {
+          throw new Error('Failed to load recipes');
+        }
+        const data = await response.json();
+        setRecipes(data);
+      } catch (error) {
+        console.error('Error loading recipes:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadRecipes();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-vh-100 d-flex align-items-center justify-content-center">
+        <div className="text-center">
+          <div className="spinner-border text-primary" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <p className="mt-3 text-muted">Loading recipes...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!recipes) {
+    return (
+      <div className="min-vh-100 d-flex align-items-center justify-content-center">
+        <div className="text-center">
+          <h2 className="text-danger mb-4">Failed to load recipes</h2>
+          <p className="text-muted">Please try refreshing the page.</p>
+        </div>
+      </div>
+    );
+  }
   
   return (
     <Layout title="Missed Steak - Vegetarian Recipes" githubRepo={githubRepo}>

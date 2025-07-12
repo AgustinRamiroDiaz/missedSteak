@@ -47,29 +47,6 @@ export default function RootLayout({
           src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
           strategy="afterInteractive"
         />
-        
-        {/* Third party plugin JS */}
-        <Script 
-          src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
-          strategy="afterInteractive"
-        />
-        
-        {/* Contact form JS */}
-        <Script 
-          src="/assets/mail/jqBootstrapValidation.js"
-          strategy="afterInteractive"
-        />
-        
-        <Script 
-          src="/assets/mail/contact_me.js"
-          strategy="afterInteractive"
-        />
-        
-        {/* Core theme JS */}
-        <Script 
-          src="/js/scripts.js"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   )
