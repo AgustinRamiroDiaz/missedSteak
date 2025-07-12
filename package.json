@@ -15,6 +15,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@chakra-ui/react": "^3.22.0",
+    "@emotion/react": "^11.14.0",
+    "animejs": "^4.0.2",
     "next": "^15.3.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
