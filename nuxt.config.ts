@@ -12,7 +12,6 @@ export default defineNuxtConfig({
     dirs: ['~/components']
   },
   app: {
-    baseURL: process.env.BASE_PATH || '/',
     head: {
       title: 'Missed Steak - Vegetarian Recipes',
       meta: [
@@ -41,6 +40,7 @@ export default defineNuxtConfig({
     '~/assets/css/global.css'
   ],
   modules: [
+    '@nuxt/image',
     '@nuxtjs/google-fonts'
   ],
   googleFonts: {

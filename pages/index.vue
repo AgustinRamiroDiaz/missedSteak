@@ -3,7 +3,7 @@
     <!-- Masthead -->
     <header class="masthead bg-primary text-white text-center">
       <div class="container d-flex align-items-center flex-column">
-        <img class="masthead-avatar mb-5" :src="withBasePath('/assets/img/salad.png')" alt="Vegetarian Salad" width="200" height="200" />
+        <NuxtImg class="masthead-avatar mb-5" src="/assets/img/salad.png" alt="Vegetarian Salad" width="200" height="200" />
         <h1 class="masthead-heading text-uppercase mb-0">vegetarian recipes</h1>
         <div class="divider-custom divider-light">
           <div class="divider-custom-line"></div>
@@ -92,9 +92,4 @@ const config = useRuntimeConfig()
 const githubRepo = config.public.githubRepo
 
 const recipes = ref(recipesData)
-
-const withBasePath = (path) => {
-  const base = useNuxtApp().$config.app.baseURL
-  return base + path.replace(/^\//, '')
-}
 </script>

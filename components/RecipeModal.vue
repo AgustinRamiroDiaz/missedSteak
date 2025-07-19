@@ -8,7 +8,7 @@
             <i class="fas fa-plus fa-3x"></i>
           </div>
         </div>
-        <img class="img-fluid" :src="withBasePath(recipe.image)" :alt="recipe.title" width="300" height="200" />
+        <NuxtImg class="img-fluid" :src="recipe.image" :alt="recipe.title" width="300" height="200" />
       </div>
     </div>
 
@@ -41,7 +41,7 @@
                     <div class="divider-custom-icon"><i class="fas fa-egg"></i></div>
                     <div class="divider-custom-line"></div>
                   </div>
-                  <img class="img-fluid rounded mb-5" :src="withBasePath(recipe.image)" :alt="recipe.title" width="400" height="300" />
+                  <NuxtImg class="img-fluid rounded mb-5" :src="recipe.image" :alt="recipe.title" width="400" height="300" />
                   <p class="mb-5" v-html="recipe.instructions"></p>
                   <button v-if="recipe.link" class="btn btn-primary">
                     <i class="fas fa-external-link-alt fa-fw"></i>
@@ -91,11 +91,6 @@ const slugify = (text) => {
 }
 
 const recipeSlug = computed(() => slugify(props.recipe.title))
-
-const withBasePath = (path) => {
-  const base = useNuxtApp().$config.app.baseURL
-  return base + path.replace(/^\//, '')
-}
 
 const deleteRecipe = () => {
   const githubUrl = `https://github.com/${props.githubRepo}/delete/main/lib/recipes/${props.type}/${props.filename}.json`

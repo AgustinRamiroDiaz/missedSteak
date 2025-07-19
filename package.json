@@ -15,6 +15,7 @@
   "description": "",
   "dependencies": {
     "nuxt": "^4.0.0",
+    "@nuxt/image": "^1.10.0",
     "@nuxtjs/google-fonts": "^3.2.0",
     "animejs": "^4.0.2"
   },

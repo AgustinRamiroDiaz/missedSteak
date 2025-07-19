@@ -23,7 +23,7 @@ jobs:
           node-version: 22
 
       - run: npm ci
-      - run: NUXT_PUBLIC_GITHUB_USERNAME_SLASH_REPO=$GITHUB_REPOSITORY BASE_PATH=/${{ github.event.repository.name }} npm run generate
+      - run: NUXT_PUBLIC_GITHUB_USERNAME_SLASH_REPO=$GITHUB_REPOSITORY NUXT_APP_BASE_URL=/${{ github.event.repository.name }} npm run generate
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
