@@ -2,11 +2,13 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import './global.css'
 
+const basePath = process.env.BASE_PATH || '';
+
 export const metadata: Metadata = {
   title: 'Missed Steak - Vegetarian Recipes',
   description: 'Vegetarian recipes that will show you that becoming a vegetarian is not a missed steak',
   icons: {
-    icon: '/assets/img/salad.png',
+    icon: `${basePath}/assets/img/salad.png`,
   },
 }
 
@@ -24,8 +26,6 @@ export default function RootLayout({
         {/* Google fonts */}
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        {/* Core theme CSS (includes Bootstrap) */}
-        <link href="/css/styles.css" rel="stylesheet" />
       </head>
       <body id="page-top">
         {children}

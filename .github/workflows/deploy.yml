@@ -23,7 +23,7 @@ jobs:
           node-version: 22
 
       - run: npm ci
-      - run: GITHUB_USERNAME_SLASH_REPO=$GITHUB_REPOSITORY BASE_PATH=/${{ github.event.repository.name }} npm run build
+      - run: NEXT_PUBLIC_GITHUB_USERNAME_SLASH_REPO=$GITHUB_REPOSITORY BASE_PATH=/${{ github.event.repository.name }} npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
