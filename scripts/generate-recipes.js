@@ -30,11 +30,18 @@ const allRecipes = {
   sweet: loadRecipesFromCategory('sweet')
 };
 
-// Ensure lib/data directory exists
+// Ensure public directory exists
+const publicDir = path.join(process.cwd(), 'public');
+if (!fs.existsSync(publicDir)) {
+  fs.mkdirSync(publicDir, { recursive: true });
+}
+
+// Also keep in lib/data for compatibility during migration
 const dataDir = path.join(process.cwd(), 'lib', 'data');
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
 }
 
+fs.writeFileSync('public/recipes.json', JSON.stringify(allRecipes, null, 2));
 fs.writeFileSync('lib/data/recipes.json', JSON.stringify(allRecipes, null, 2));
-console.log('✓ Recipes exported to lib/data/recipes.json');
+console.log('✓ Recipes exported to public/recipes.json');

@@ -1,0 +1,25 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[6678,["39","static/chunks/app/error-36698dc3effba287.js"],"default"]
+4:I[1295,[],""]
+5:I[6874,["345","static/chunks/app/not-found-0b202964d34279d6.js"],""]
+6:I[9243,["177","static/chunks/app/layout-71ead63abc5ff70c.js"],""]
+7:I[894,[],"ClientPageRoot"]
+8:I[7162,["701","static/chunks/701-b6a627c613b5857b.js","974","static/chunks/app/page-c1ca520a6a24a73b.js"],"default"]
+b:I[9665,[],"OutletBoundary"]
+e:I[4911,[],"AsyncMetadataOutlet"]
+10:I[9665,[],"ViewportBoundary"]
+12:I[9665,[],"MetadataBoundary"]
+14:I[6614,[],""]
+:HL["/_next/static/css/6f7fad0d1ff8fc6c.css","style"]
+0:{"P":null,"b":"OAFRzy99wRfs9aklTsFD4","p":"","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/6f7fad0d1ff8fc6c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","meta",null,{"charSet":"utf-8"}],["$","link",null,{"href":"https://fonts.googleapis.com/css?family=Montserrat:400,700","rel":"stylesheet","type":"text/css"}],["$","link",null,{"href":"https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic","rel":"stylesheet","type":"text/css"}]]}],["$","body",null,{"id":"page-top","children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-vh-100 d-flex align-items-center justify-content-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"display-1 fw-bold text-primary","children":"404"}],["$","p",null,{"className":"fs-3","children":[["$","span",null,{"className":"text-danger","children":"Oops!"}]," Page not found."]}],["$","p",null,{"className":"lead mb-4","children":"The page you're looking for doesn't exist."}],["$","$L5",null,{"href":"/","className":"btn btn-primary","children":[["$","i",null,{"className":"fas fa-home me-2"}],"Go Home"]}]]}]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L6",null,{"src":"https://use.fontawesome.com/releases/v5.15.3/js/all.js","strategy":"beforeInteractive","crossOrigin":"anonymous"}],["$","$L6",null,{"src":"https://code.jquery.com/jquery-3.5.1.min.js","strategy":"beforeInteractive"}],["$","$L6",null,{"src":"https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js","strategy":"afterInteractive"}]]}]]}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L7",null,{"Component":"$8","searchParams":{},"params":{},"promises":["$@9","$@a"]}],null,["$","$Lb",null,{"children":["$Lc","$Ld",["$","$Le",null,{"promise":"$@f"}]]}]]}],{},null,false]},[["$","div","l",{"className":"min-vh-100 d-flex align-items-center justify-content-center","children":["$","div",null,{"className":"text-center","children":[["$","div",null,{"className":"spinner-border text-primary","role":"status","children":["$","span",null,{"className":"sr-only","children":"Loading..."}]}],["$","p",null,{"className":"mt-3 text-muted","children":"Loading recipes..."}]]}]}],[],[]],false],["$","$1","h",{"children":[null,["$","$1","UZBlhIIpb52aIyiY9weZMv",{"children":[["$","$L10",null,{"children":"$L11"}],null]}],["$","$L12",null,{"children":"$L13"}]]}],false]],"m":"$undefined","G":["$14","$undefined"],"s":false,"S":true}
+15:"$Sreact.suspense"
+16:I[4911,[],"AsyncMetadata"]
+9:{}
+a:{}
+13:["$","div",null,{"hidden":true,"children":["$","$15",null,{"fallback":null,"children":["$","$L16",null,{"promise":"$@17"}]}]}]
+d:null
+11:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+c:null
+f:{"metadata":[["$","title","0",{"children":"Missed Steak - Vegetarian Recipes"}],["$","meta","1",{"name":"description","content":"Vegetarian recipes that will show you that becoming a vegetarian is not a missed steak"}],["$","link","2",{"rel":"icon","href":"/assets/img/salad.png"}]],"error":null,"digest":"$undefined"}
+17:{"metadata":"$f:metadata","error":null,"digest":"$undefined"}

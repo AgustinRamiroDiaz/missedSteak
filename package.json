@@ -2,12 +2,11 @@
   "name": "missedsteak",
   "version": "1.0.0",
   "type": "module",
-  "main": "index.js",
   "scripts": {
-    "dev": "npm run generate-recipes && next dev",
-    "build": "npm run generate-recipes && next build",
-    "start": "next start",
-    "export": "npm run generate-recipes && next build",
+    "dev": "npm run generate-recipes && nuxt dev",
+    "build": "npm run generate-recipes && nuxt build",
+    "generate": "npm run generate-recipes && nuxt generate",
+    "preview": "nuxt preview",
     "generate-recipes": "node scripts/generate-recipes.js"
   },
   "keywords": [],
@@ -15,16 +14,12 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@chakra-ui/react": "^3.22.0",
-    "@emotion/react": "^11.14.0",
-    "animejs": "^4.0.2",
-    "next": "^15.3.5",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "nuxt": "^4.0.0",
+    "@nuxtjs/google-fonts": "^3.2.0",
+    "animejs": "^4.0.2"
   },
   "devDependencies": {
-    "@types/node": "^24.0.12",
-    "@types/react": "^19.1.8",
+    "@types/animejs": "^3.1.13",
     "typescript": "^5.8.3"
   }
 }

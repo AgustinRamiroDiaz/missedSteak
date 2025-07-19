@@ -23,12 +23,12 @@ jobs:
           node-version: 22
 
       - run: npm ci
-      - run: NEXT_PUBLIC_GITHUB_USERNAME_SLASH_REPO=$GITHUB_REPOSITORY BASE_PATH=/${{ github.event.repository.name }} npm run build
+      - run: NUXT_PUBLIC_GITHUB_USERNAME_SLASH_REPO=$GITHUB_REPOSITORY BASE_PATH=/${{ github.event.repository.name }} npm run generate
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./.output/public
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
