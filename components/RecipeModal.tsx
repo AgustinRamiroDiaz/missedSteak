@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Recipe } from '../lib/types';
+import { withBasePath } from '@/utils/basePath';
 
 interface RecipeModalProps {
   recipe: Recipe;
@@ -31,17 +32,17 @@ export default function RecipeModal({ recipe, filename, type, githubRepo }: Reci
               <i className="fas fa-plus fa-3x"></i>
             </div>
           </div>
-          <Image className="img-fluid" src={recipe.image} alt={recipe.title} width={300} height={200} />
+          <Image className="img-fluid" src={withBasePath(recipe.image)} alt={recipe.title} width={300} height={200} />
         </div>
       </div>
 
       {/* Modal */}
-      <div 
-        className="portfolio-modal modal fade" 
-        id={`portfolio${recipeSlug}`} 
-        tabIndex={-1} 
+      <div
+        className="portfolio-modal modal fade"
+        id={`portfolio${recipeSlug}`}
+        tabIndex={-1}
         role="dialog"
-        aria-labelledby={`portfolio${recipeSlug}Label`} 
+        aria-labelledby={`portfolio${recipeSlug}Label`}
         aria-hidden="true"
       >
         <div className="modal-dialog modal-xl" role="document">
@@ -53,7 +54,7 @@ export default function RecipeModal({ recipe, filename, type, githubRepo }: Reci
               <div className="container">
                 <div className="row justify-content-center">
                   <div className="col-lg-8">
-                    <h2 
+                    <h2
                       className="portfolio-modal-title text-secondary text-uppercase mb-0"
                       id={`portfolio${recipeSlug}Label`}
                     >
@@ -64,7 +65,7 @@ export default function RecipeModal({ recipe, filename, type, githubRepo }: Reci
                       <div className="divider-custom-icon"><i className="fas fa-egg"></i></div>
                       <div className="divider-custom-line"></div>
                     </div>
-                    <Image className="img-fluid rounded mb-5" src={recipe.image} alt={recipe.title} width={400} height={300} />
+                    <Image className="img-fluid rounded mb-5" src={withBasePath(recipe.image)} alt={recipe.title} width={400} height={300} />
                     <p className="mb-5" dangerouslySetInnerHTML={{ __html: recipe.instructions }}></p>
                     {recipe.link && (
                       <button className="btn btn-primary">
@@ -72,8 +73,8 @@ export default function RecipeModal({ recipe, filename, type, githubRepo }: Reci
                         <a target="_blank" href={recipe.link} rel="noopener noreferrer">Link to recipe</a>
                       </button>
                     )}
-                    <button 
-                      className="btn btn-danger" 
+                    <button
+                      className="btn btn-danger"
                       id={`deleteRecipe${recipeSlug}`}
                       onClick={deleteRecipe}
                     >
