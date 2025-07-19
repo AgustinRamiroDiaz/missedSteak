@@ -30,5 +30,11 @@ const allRecipes = {
   sweet: loadRecipesFromCategory('sweet')
 };
 
-fs.writeFileSync('public/recipes.json', JSON.stringify(allRecipes, null, 2));
-console.log('✓ Recipes exported to public/recipes.json');
+// Ensure lib/data directory exists
+const dataDir = path.join(process.cwd(), 'lib', 'data');
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
+
+fs.writeFileSync('lib/data/recipes.json', JSON.stringify(allRecipes, null, 2));
+console.log('✓ Recipes exported to lib/data/recipes.json');

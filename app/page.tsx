@@ -1,50 +1,17 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { RecipesByCategory } from '../lib/types';
-import { withBasePath } from '../utils/basePath';
+import recipesData from '../lib/data/recipes.json';
 
 const Layout = dynamic(() => import('../components/Layout'), { ssr: false });
 const RecipeModal = dynamic(() => import('../components/RecipeModal'), { ssr: false });
 
 export default function Home() {
-  const [recipes, setRecipes] = useState<RecipesByCategory | null>(null);
-  const [loading, setLoading] = useState(true);
+  const recipes = recipesData as RecipesByCategory;
   const githubRepo = process.env.NEXT_PUBLIC_GITHUB_USERNAME_SLASH_REPO || 'magalipujol/missedSteak';
-
-  useEffect(() => {
-    const loadRecipes = async () => {
-      try {
-        const response = await fetch(withBasePath('/recipes.json'));
-        if (!response.ok) {
-          throw new Error('Failed to load recipes');
-        }
-        const data = await response.json();
-        setRecipes(data);
-      } catch (error) {
-        console.error('Error loading recipes:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadRecipes();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-vh-100 d-flex align-items-center justify-content-center">
-        <div className="text-center">
-          <div className="spinner-border text-primary" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-          <p className="mt-3 text-muted">Loading recipes...</p>
-        </div>
-      </div>
-    );
-  }
 
   if (!recipes) {
     return (
@@ -62,7 +29,7 @@ export default function Home() {
       {/* Masthead */}
       <header className="masthead bg-primary text-white text-center">
         <div className="container d-flex align-items-center flex-column">
-          <Image className="masthead-avatar mb-5" src={withBasePath("/assets/img/salad.png")} alt="Vegetarian Salad" width={200} height={200} />
+          <Image className="masthead-avatar mb-5" src="/assets/img/salad.png" alt="Vegetarian Salad" width={200} height={200} />
           <h1 className="masthead-heading text-uppercase mb-0">vegetarian recipes</h1>
           <div className="divider-custom divider-light">
             <div className="divider-custom-line"></div>
